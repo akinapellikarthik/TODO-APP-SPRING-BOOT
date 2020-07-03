@@ -67,4 +67,9 @@ public class TodoController {
 
     }
 
+    @GetMapping("/todoNotCompletedCount")
+    public Integer todoNotCompletedCount(){
+        return this.services.getTodoNotCompletedCount();
+    }
+
 }

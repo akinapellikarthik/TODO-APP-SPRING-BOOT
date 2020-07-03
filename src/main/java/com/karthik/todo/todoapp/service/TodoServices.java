@@ -7,6 +7,7 @@ import com.karthik.todo.todoapp.exceptions.UserNotFoundException;
 import com.karthik.todo.todoapp.repo.TodoRepo;
 import com.karthik.todo.todoapp.repo.TodoUsersRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -40,7 +41,7 @@ public class TodoServices {
 
     public List<Todo> getAllTodo(){
 
-        return todoRepo.findAll();
+        return todoRepo.findAll(Sort.by(Sort.Direction.ASC,"id"));
     }
 
     public boolean deleteTodoById(Integer todoId){
@@ -56,5 +57,9 @@ public class TodoServices {
 
     public Optional<Todo> getTodoById(Integer id){
         return this.todoRepo.findById(id);
+    }
+
+    public Integer getTodoNotCompletedCount(){
+        return this.todoRepo.todoNotCompletedCount();
     }
 }
