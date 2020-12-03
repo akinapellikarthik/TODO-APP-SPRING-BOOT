@@ -24,7 +24,7 @@ public interface TodoRepo extends JpaRepository<Todo, Integer> {
                     @Param("TODO_DATE") Date TODO_DATE
                     );
 
-    @Query(value = "SELECT COUNT(1) FROM TODO WHERE TODO_DATE = TO_DATE(SYSDATE,'DD-MON-YY') AND ISDONE = 0",nativeQuery = true)
+    @Query(value = "SELECT COUNT(1) FROM TODO WHERE TODO_DATE = STR_TO_DATE (SYSDATE(),'DD-MON-YY') AND ISDONE = 0",nativeQuery = true)
     Integer todoNotCompletedCount();
 
 }
