@@ -10,3 +10,4 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
   application:
     name: TODO-Application
+
